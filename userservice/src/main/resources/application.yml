@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:0}
+  port: 8080
 
 spring:
   application:
@@ -7,11 +7,23 @@ spring:
   devtools:
     restart:
       enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/baasdb
+    username: root
+    password: Password123#@!
+    initialization-mode: never
+    hikari:
+      maximum-pool-size: 10
+      auto-commit: true
   h2:
     console:
-      enabled: true
+      enabled: false
       settings:
-        web-allow-others: true
+        web-allow-others: false
 
 eureka:
   instance:

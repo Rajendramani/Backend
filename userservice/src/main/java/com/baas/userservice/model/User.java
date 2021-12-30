@@ -16,16 +16,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class User {
-	@NotNull(message = "Firstname cannot be null")
-	@Size(min = 2, message = "Firstname must not be less than 2 characters")
-	private String firstName;
-	@NotNull(message = "Lasttname cannot be null")
-	@Size(min = 2, message = "Lastname must not be less than 2 characters")
-	private String lastName;
-	@NotNull(message = "Password cannot be null")
-	@Size(min = 8, max = 16, message = "Password must be equal or greater than 8 characters and less than 16 characters")
-	private String password;
-	@NotNull(message = "Email cannot be null")
-	@Email
-	private String email;
+	public String firstName;
+	public String lastName;
+	public String password;
+	public String email;
+	public String userId;
 }
