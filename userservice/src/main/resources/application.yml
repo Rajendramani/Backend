@@ -1,5 +1,15 @@
 server:
-  port: 8080
+  port: ${PORT:0}
+
+gatewayIP : 192.168.1.40
+
+token:
+  expiration_time: 864000000
+  secret: asd9a09asdas90d9as0d9q039eq2
+
+login:
+  url:
+    path: /users/login
 
 spring:
   application:
@@ -24,6 +34,24 @@ spring:
       enabled: false
       settings:
         web-allow-others: false
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 5KB
+      max-file-size: 5MB
+      max-request-size: 6MB
+      
+logging:
+  file: logs/userservice.log
+  pattern:
+    console: "%d [%level] %c{1.} [%t] %m%n"
+    file: "%d [%level] %c{1.} [%t] %m%n"
+  level:
+    roor: info
+    com.baas.userservice.*: debug
+    org.springframework.web: error
+    org.hibernate: error
+ 
 
 eureka:
   instance:
@@ -32,14 +60,6 @@ eureka:
     serviceUrl:
       defaultZone: http://test:test@localhost:8010/eureka
 
-logging:
-  level:
-    corg.springframework: ERROR
-    com.baas: DEBUG
-    com.baas.*: DEBUG
-  pattern:
-    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n"
-    file: "%d %-5level [%thread] %logger : %msg%n"
-  file: log/userservice.log
+    
   
 #MySQL DEFAULT PWD: root - insert_password
