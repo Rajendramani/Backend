@@ -17,10 +17,11 @@ import com.baas.userservice.repository.UserRepository;
 import com.baas.userservice.shared.UserDto;
 import com.baas.userservice.utils.GenericResponse;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
-
-	private final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Autowired
 	UserRepository userRepository;
@@ -50,7 +51,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		log.info("loadUserByUsername");
 		UserEntity userEntity = userRepository.findByEmail(username);
+		log.debug("UserEntity : {}", userEntity);
 		if (userEntity == null)
 			throw new UsernameNotFoundException(username);
 		return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), true, true, true, true,
@@ -59,7 +62,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDto getUserDetailsByEmail(String email) {
+		log.info("getUserDetailsByEmail");
 		UserEntity userEntity = userRepository.findByEmail(email);
+		log.debug("UserEntity : {}", userEntity);
 		if (userEntity == null)
 			throw new UsernameNotFoundException(email);
 		return new ModelMapper().map(userEntity, UserDto.class);

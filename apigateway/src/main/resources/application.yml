@@ -12,9 +12,11 @@ spring:
         predicates:
         - Path=/users/check/status
         - Method=GET
+        - Header=Authorization, Bearer {.*}
         filters:
         - RemoveRequestHeader=Cookie
-#        - RewritePath=/users-ws/(?<segment>.*, /$\{segment}
+        - RewritePath=/users-ws/(?<segment>.*, /$\{segment}
+        - AuthorizationHeaderFilter
       discovery:
         locator:
           enabled: true

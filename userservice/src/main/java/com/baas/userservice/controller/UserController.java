@@ -34,7 +34,7 @@ public class UserController {
 
 	@GetMapping("/check/status")
 	public String checkStatus() {
-		log.info("UserController: Check status");
+		log.info("Check status");
 		return "Working on port " + env.getProperty("local.server.port");
 
 	}
@@ -44,8 +44,8 @@ public class UserController {
 			produces = { MediaType.APPLICATION_JSON_VALUE }, 
 			value = "/create")
 	public ResponseEntity<GenericResponse> createUser(@RequestBody CreateUserRequestModel user) {
-		//log.info("Create User");
-		//log.debug("User :{}", user);
+		log.info("Create User");
+		log.debug("User :{}", user);
 		GenericResponse genericResponse = new GenericResponse();
 		ModelMapper mdlmapper = new ModelMapper();
 		HttpStatus httpStatus = null;
@@ -58,7 +58,7 @@ public class UserController {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			//log.error("Error : {}", e.toString());
+			log.error("Error : {}", e.toString());
 		}
 		return new ResponseEntity<GenericResponse>(genericResponse, httpStatus);
 	}

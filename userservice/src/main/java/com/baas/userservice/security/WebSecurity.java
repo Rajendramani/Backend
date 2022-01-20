@@ -11,6 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.baas.userservice.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Configuration
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -26,15 +29,18 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		log.info("configure websecurity");
 		http.csrf().disable();
 		http.authorizeRequests().antMatchers("/users/**")
 		.hasIpAddress(environment.getProperty("gatewayIP"))
 		.and()
 		.addFilter(getAuthenticationFilter());
 		http.headers().frameOptions().disable();
+		log.debug("HTTP : {}", http);
 	}
 
 	private AuthenticationFilter getAuthenticationFilter() throws Exception {
+		log.info("getAuthenticationFilter");
 		AuthenticationFilter authenticationFilter = new AuthenticationFilter(usersService, environment, authenticationManager());
 		//authenticationFilter.setAuthenticationManager(authenticationManager());
 		authenticationFilter.setFilterProcessesUrl(environment.getProperty("login.url.path"));
@@ -42,7 +48,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	}
 	
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(usersService).passwordEncoder(bCryptPasswordEncoder);
-		
+		log.info("configure");
+		auth.userDetailsService(usersService).passwordEncoder(bCryptPasswordEncoder);	
 	}
 }

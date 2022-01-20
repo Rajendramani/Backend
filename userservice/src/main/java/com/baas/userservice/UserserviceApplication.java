@@ -7,12 +7,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Configuration
 @SpringBootApplication
 @EnableEurekaClient
 public class UserserviceApplication {
 
 	public static void main(String[] args) {
+		log.info("Application Context: UserserviceApplication");
 		SpringApplication.run(UserserviceApplication.class, args);
 	}
 
