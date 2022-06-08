@@ -16,7 +16,6 @@ spring:
         filters:
         - RemoveRequestHeader=Cookie
         - RewritePath=/users-ws/(?<segment>.*, /$\{segment}
-        - AuthorizationHeaderFilter
       discovery:
         locator:
           enabled: true
