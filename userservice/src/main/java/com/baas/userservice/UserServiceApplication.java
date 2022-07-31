@@ -13,11 +13,11 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @SpringBootApplication
 @EnableEurekaClient
-public class UserserviceApplication {
+public class UserServiceApplication {
 
 	public static void main(String[] args) {
-		log.info("Application Context: UserserviceApplication");
-		SpringApplication.run(UserserviceApplication.class, args);
+		log.info("Application Context: UserServiceApplication");
+		SpringApplication.run(UserServiceApplication.class, args);
 	}
 
 	@Bean

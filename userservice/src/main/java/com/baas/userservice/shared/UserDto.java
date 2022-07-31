@@ -13,11 +13,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class UserDto implements Serializable{
+public class UserDto{
 private String firstName;
 private String lastName;
 private String email;
 private String password;
-private String userId;
+//private String userId;
 private String encryptedPassword;
 }

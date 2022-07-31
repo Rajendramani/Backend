@@ -1,11 +1,12 @@
 server:
-  port: ${PORT:0}
+  port: 8012
 
-gatewayIP : 192.168.1.40
+gateway:
+  ip: 192.168.29.133
 
 token:
   expiration_time: 864000000
-  secret: asd9a09asdas90d9as0d9q039eq2
+  secret: hfgry463hf746hf573ydh475fhy5739
 
 login:
   url:
@@ -22,9 +23,9 @@ spring:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/baasdb
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/backend
     username: root
-    password: Password123#@!
+    password: root
     initialization-mode: never
     hikari:
       maximum-pool-size: 10
@@ -40,25 +41,11 @@ spring:
       file-size-threshold: 5KB
       max-file-size: 5MB
       max-request-size: 6MB
-      
-logging:
-  file: logs/userservice.log
-  pattern:
-    console: "%d [%level] %c{1.} [%t] %m%n"
-    file: "%d [%level] %c{1.} [%t] %m%n"
-  level:
-    roor: info
-    com.baas.userservice.*: debug
-    org.springframework.web: error
-    org.hibernate: error
- 
 
 eureka:
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     serviceUrl:
-      defaultZone: http://test:test@localhost:8010/eureka
+      defaultZone: http://localhost:8010/eureka
 
     
   

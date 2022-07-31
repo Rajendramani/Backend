@@ -1,17 +1,18 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-17e005cb465-44b77f3c16f16795": {
+		"mysql8-181d89bc665-5ec50f3527fe377b": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "baasdb",
+			"name": "backend",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
 				"host": "localhost",
 				"port": "3306",
-				"database": "baasdb",
-				"url": "jdbc:mysql://localhost:3306/baasdb",
+				"database": "backend",
+				"url": "jdbc:mysql://localhost:3306/backend",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
 				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}

@@ -17,22 +17,26 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
+	
+	private Environment environment;
+	private UserService userService;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
-	Environment environment;
-	
-	@Autowired
-	UserService usersService;
-	
-	@Autowired
-	BCryptPasswordEncoder bCryptPasswordEncoder;
+	public WebSecurity(Environment environment, UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder)
+	{
+		this.environment = environment;
+		this.userService = userService;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
+
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		log.info("configure websecurity");
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers("/users/**")
-		.hasIpAddress(environment.getProperty("gatewayIP"))
+		http.csrf().disable();
+		http.authorizeRequests().antMatchers("/**").permitAll()//.hasIpAddress(environment.getProperty("gateway.ip"))
 		.and()
 		.addFilter(getAuthenticationFilter());
 		http.headers().frameOptions().disable();
@@ -41,14 +45,15 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	private AuthenticationFilter getAuthenticationFilter() throws Exception {
 		log.info("getAuthenticationFilter");
-		AuthenticationFilter authenticationFilter = new AuthenticationFilter(usersService, environment, authenticationManager());
+		AuthenticationFilter authenticationFilter = new AuthenticationFilter(userService, environment, authenticationManager());
 		//authenticationFilter.setAuthenticationManager(authenticationManager());
 		authenticationFilter.setFilterProcessesUrl(environment.getProperty("login.url.path"));
 		return authenticationFilter;
 	}
 	
+	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		log.info("configure");
-		auth.userDetailsService(usersService).passwordEncoder(bCryptPasswordEncoder);	
+		auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);	
 	}
 }

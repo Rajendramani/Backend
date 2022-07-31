@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 public interface UserService extends UserDetailsService {
+
 	public GenericResponse createUser(UserDto userDetails);
 
 	public UserDto getUserDetailsByEmail(String email);

@@ -22,20 +22,24 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "users")
-public class UserEntity implements Serializable {
+public class UserEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, name = "Id")
-	private Long id;
-	@Column(nullable = false, length = 50, name = "FirstName")
+	@GeneratedValue
+	private long id;
+
+	@Column(nullable = false, length = 50)
 	private String firstName;
-	@Column(nullable = false, length = 50, name = "LastName")
+
+	@Column(nullable = false, length = 50)
 	private String lastName;
-	@Column(nullable = false, length = 120, unique = true, name = "Email")
+
+	@Column(nullable = false, length = 120, unique = true)
 	private String email;
-	@Column(nullable = false, length = 50, name = "UserId")
-	private String userId;
-	@Column(nullable = false, name = "EncryptedPassword")
+	/*
+	 * @Column(nullable = false, unique = true) private String userId;
+	 */
+
+	@Column(nullable = false, unique = true)
 	private String encryptedPassword;
 
 }

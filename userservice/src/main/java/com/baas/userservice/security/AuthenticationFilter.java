@@ -1,7 +1,6 @@
 package com.baas.userservice.security;
 
 import java.io.IOException;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -31,15 +30,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-	private UserService userService;
+	private UserService UserService;
 	private Environment environment;
 
 	@Autowired
-	public AuthenticationFilter(UserService userService, Environment environment,
+	public AuthenticationFilter(UserService UserService, Environment environment,
 			AuthenticationManager authenticationManager) {
 		super();
 		log.info("AuthenticationFilter");
-		this.userService = userService;
+		this.UserService = UserService;
 		this.environment = environment;
 		super.setAuthenticationManager(authenticationManager);
 	}
@@ -65,17 +64,17 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 		log.info("successfulAuthentication");
 		String userName = ((User) authResult.getPrincipal()).getUsername();
-		UserDto userDetails = userService.getUserDetailsByEmail(userName);
+		UserDto userDetails = UserService.getUserDetailsByEmail(userName);
 		log.debug("UserName : {}", userName);
 		log.debug("UserDetails : {}", userDetails);
 
-		String token = Jwts.builder().setSubject(userDetails.getUserId())
+		String token = Jwts.builder().setSubject(userDetails.getEmail())
 				.setExpiration(new Date(
 						System.currentTimeMillis() + Long.parseLong(environment.getProperty("token.expiration_time"))))
 				.signWith(SignatureAlgorithm.HS512, environment.getProperty("token.secret")).compact();
 		log.debug("Token : {}", token);
 		response.addHeader("token", token);
-		response.addHeader("userId", userDetails.getUserId());
+		response.addHeader("Email", userDetails.getEmail());
 	}
 
 }
