@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:Rajendramani/Backend-ConfigServer.git
+          ignoreLocalSshSettings: true
+          hostKeyAlgorithm: ssh-rsa
+          privateKey: |
+                        -----BEGIN OPENSSH PRIVATE KEY-----
+                        b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+                        NhAAAAAwEAAQAAAYEAw9e90oP7dcSPlf6EsmIcoQFddoA0TQXOIk3L+XwqdsKw4YlzXwUH
+                        bZ7wQorOe4LdCbpPI7CQe+O5aTkX6/8aF+nipA6iI26oECZI/eSnoR0tdLNTHo6KSlew9f
+                        KUGec/jtROmKf7wU4+VDfH95cbrJWrbTMPOiG/FxDqgd0T81JT1Vn/hxR/zZkw7dRK2Fyg
+                        cd20BDByx9/aLtlg/LfButwE9XqP2HQXOv2mLrd1pFC+Hsg7n+V9qGqTQfG1xlwuGrOAjr
+                        fPZS1w5FuPMBMCi7BY3E4POTFHUpMcchkJIGUEmNT4ImLoiEVM1Hrsyut0VQShoOEoHO8D
+                        gs4VGnqrkMExzB2he1LwJKu71jl/ZZgfIjua1/dK/INx0RfxAGHtFgcbGS9HVdw7ePT+Ak
+                        LVVQVIfL+NsovtPNXE40Vt9SoTtibKqDKmYK+1pHT786GjloADacf8vTkRHzrkj1cnRBhT
+                        u3tgLZRYLXxMN8MPH1J99K3BvjPVqkkLMjXlSnoJAAAFkIniG52J4hudAAAAB3NzaC1yc2
+                        EAAAGBAMPXvdKD+3XEj5X+hLJiHKEBXXaANE0FziJNy/l8KnbCsOGJc18FB22e8EKKznuC
+                        3Qm6TyOwkHvjuWk5F+v/Ghfp4qQOoiNuqBAmSP3kp6EdLXSzUx6OikpXsPXylBnnP47UTp
+                        in+8FOPlQ3x/eXG6yVq20zDzohvxcQ6oHdE/NSU9VZ/4cUf82ZMO3USthcoHHdtAQwcsff
+                        2i7ZYPy3wbrcBPV6j9h0Fzr9pi63daRQvh7IO5/lfahqk0HxtcZcLhqzgI63z2UtcORbjz
+                        ATAouwWNxODzkxR1KTHHIZCSBlBJjU+CJi6IhFTNR67MrrdFUEoaDhKBzvA4LOFRp6q5DB
+                        McwdoXtS8CSru9Y5f2WYHyI7mtf3SvyDcdEX8QBh7RYHGxkvR1XcO3j0/gJC1VUFSHy/jb
+                        KL7TzVxONFbfUqE7YmyqgypmCvtaR0+/Oho5aAA2nH/L05ER865I9XJ0QYU7t7YC2UWC18
+                        TDfDDx9SffStwb4z1apJCzI15Up6CQAAAAMBAAEAAAGAWsWcTf6uhp9cjgEyMBwZeObREy
+                        PJGgoeyPeWG0TZycHjiiXTO69xCfYpFi6QFd9J5EBefgRQc5vRTFwSImhTB9J4IeJGdHXN
+                        n+6e1k8tAxgrAXQ8imU2485RTy3oRzlP1DvDUi5KGgbSDObt4GxBf3S/yBVqcV9C2sYUa6
+                        y0mosGIFVegpWVxw3CB/nl1vLXyu8fiPGLweiXkC9hLMFfIeTox37PPVxRiB4Y8H5IIKjr
+                        9giI2kvcOjtrlZ0ay53dT+sDLGyfY+AnhQ9ZC0XhQYhd7jiZ8SrBuyEYOjYeXg0+zHnIta
+                        IYR3DzQ8RnOWCuC6I9hWBRs4/o3s/0AzoqmHh3kD2oZ28htw27XhUoAgE8Ll3zImhQ5Neb
+                        nDQgiT/+6jwRilkysXU51gulsAgfOvd1MBeoVGZ+cGfMudLhPi5H89UJfcQ1h4PvFOSHCL
+                        QMZSvo830SqlJeszEn5PUDxJKHi4s0tsiiCNdmg5JMb3FHNRMU3vzvcovvZZlo6EKhAAAA
+                        wQCq4BymJXFi2nxYmKIoo/70Goj55q6/DR62rg6LhiETh3UAm390QOxoEkPV99IFbrx6t/
+                        RXOZWDQk736AdULSnlR34P7Wul8MG9Bd67N9e2oSuLSFHQYAYuroQSZ+86LS9Z19FwUX1p
+                        X5Lvb9tlPJDP3ru3iVhyfsmn6q4WiTwAILRubmJpeObN4kldZkotxaWhXTZ7oVSJBbFiiz
+                        eyj9mrwRs68J+8hUjEs5/7xiy/gx92PnPi/fhHq+++EbRHxKYAAADBAPl+ObczNwVv5D6v
+                        MdmZYoV6rlgmmRy0agAVkzgVwySYtt0zw5PazdAylDeHAfqX3IsEZNEBpHrSEwSlX9B/FY
+                        DdpN2u9PeynX4+Ct8M3P1Z+BPi9Wxdgw4fTv05M8X9IQGP/oSj4AWTaH8Zw3CDTYsWtqOI
+                        CsL4Mex1XZMdqNeUQh1O7BLKkh8wB/qissIMpKhxPSnGLrc/dAQ0SwmGZTugFkrwjt4UX1
+                        DkcKH+7aeV2qVTNH4bOnmfReeMh0qAUwAAAMEAyPNP8tNPwbU6WUtLHKLqmPkO/IOgGZ3P
+                        LnaheHWMVi4XcanKpGuJAgY5r5Bgr341US3OCp2VZl0np4yJKx52Jj8+YRKSCr4/lcetw7
+                        orJTcWrQnz1CSBxOwwaie3hPUlQo55oq4VTnb67fGmE2sf7vUbusTS3R0LsJokAzsG172L
+                        uvvlKtUSeLRp9w5klxfRejmJGomKRQoOU7qFpjQy4jBEMrGD9g3AwSP3IquoGBW2m0BO73
+                        HReAjAW2AXqkCzAAAAGHJhamVuZHJhbWFuaS5yQGdtYWlsLmNvbQEC
+                        -----END OPENSSH PRIVATE KEY-----
+server:
+  port: 8013
+  
