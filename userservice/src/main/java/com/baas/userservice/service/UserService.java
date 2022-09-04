@@ -15,4 +15,6 @@ public interface UserService extends UserDetailsService {
 	public GenericResponse createUser(UserDto userDetails);
 
 	public UserDto getUserDetailsByEmail(String email);
+	
+	public UserDto getUserDetailsByUserId(String userId);
 }

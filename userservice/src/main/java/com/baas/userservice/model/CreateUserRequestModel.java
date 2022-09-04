@@ -28,7 +28,8 @@ public class CreateUserRequestModel {
 	@NotNull(message = "Email cannot be null")
 	@Email
 	private String email;
-	/*
-	 * @NotNull(message = "UserId cannot be null") public String userId;
-	 */
+
+	@NotNull(message = "UserId cannot be null")
+	public String userId;
+
 }

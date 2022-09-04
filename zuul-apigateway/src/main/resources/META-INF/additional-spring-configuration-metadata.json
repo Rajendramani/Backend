@@ -1,5 +1,37 @@
-{"properties": [{
-  "name": "token.secret",
-  "type": "java.lang.String",
-  "description": "A description for 'token.secret'"
-}]}
+{"properties": [
+  {
+    "name": "token.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'token.secret'"
+  },
+  {
+    "name": "api.h2console.url.path",
+    "type": "java.lang.String",
+    "description": "A description for 'api.h2console.url.path'"
+  },
+  {
+    "name": "api.login.url.path",
+    "type": "java.lang.String",
+    "description": "A description for 'api.login.url.path'"
+  },
+  {
+    "name": "api.registration.url.path",
+    "type": "java.lang.String",
+    "description": "A description for 'api.registration.url.path'"
+  },
+  {
+    "name": "authorization.token.header.name",
+    "type": "java.lang.String",
+    "description": "A description for 'authorization.token.header.name'"
+  },
+  {
+    "name": "authorization.token.header.prefix",
+    "type": "java.lang.String",
+    "description": "A description for 'authorization.token.header.prefix'"
+  },
+  {
+    "name": "token.expiration_time",
+    "type": "java.lang.String",
+    "description": "A description for 'token.expiration_time'"
+  }
+]}

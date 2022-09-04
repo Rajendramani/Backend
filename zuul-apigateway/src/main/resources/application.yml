@@ -1,6 +1,9 @@
 spring:
   application:
     name: zuul
+  cloud:
+    compatibility-verifier:
+      enabled: false
     
 server:
   port: 8011
@@ -21,7 +24,6 @@ api:
     url:
       path: /users-ws/users/login
 #api.users.actuator.url.path=/users-ws/actuator/*
-
 authorization:
   token:
     header:
@@ -31,6 +33,15 @@ authorization:
 token:
   expiration_time: 864000000
   secret: hfgry463hf746hf573ydh475fhy5739
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: zuul
 
 #spring.rabbitmq.host=localhost
 #spring.rabbitmq.port=5672

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
+@Builder
 @Table(name = "users")
 public class UserEntity {
 	@Id
@@ -35,9 +37,9 @@ public class UserEntity {
 
 	@Column(nullable = false, length = 120, unique = true)
 	private String email;
-	/*
-	 * @Column(nullable = false, unique = true) private String userId;
-	 */
+
+	@Column(nullable = false, unique = true)
+	private String userId;
 
 	@Column(nullable = false, unique = true)
 	private String encryptedPassword;

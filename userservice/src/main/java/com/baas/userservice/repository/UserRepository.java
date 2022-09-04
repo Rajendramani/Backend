@@ -8,4 +8,5 @@ import com.baas.userservice.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	UserEntity findByEmail(String email);
+	UserEntity findByUserId(String userId);
 }

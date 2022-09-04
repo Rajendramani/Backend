@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: git
   application:
     name: configserver
   rabbitmq:
@@ -13,12 +15,12 @@ spring:
           uri: https://gitlab.com/rajendramani-r/configserver.git
           username: rajendramani.r@gmail.com
           password: ARRMani@1489
+          defaultLabel: master
+        native:
+          searchLocations: file://${NATIVE_FILE_LOC}/
 
 server:
   port: 8013
-  
-token:
-  expiration_time: 9000000000
 
 management:
   security:
