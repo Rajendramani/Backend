@@ -27,7 +27,6 @@ import com.baas.userservice.repository.UserRepository;
 import com.baas.userservice.shared.UserDto;
 import com.baas.userservice.utils.GenericResponse;
 
-import feign.FeignException.FeignClientException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -112,14 +111,11 @@ public class UserServiceImpl implements UserService {
 		 */
 
 		// Feign Client
-		try {
+		
 			List<AlbumResponseModel> albumList = albumsProxy.userAlbums(userId);
 			log.debug("albumList: {}", albumList);
 			dto.setAlbums(albumList);
-		} catch (FeignClientException e) {
-			// TODO: handle exception
-			log.error("FeignException: {}", e);
-		}
+		
 		return dto;
 	}
 
