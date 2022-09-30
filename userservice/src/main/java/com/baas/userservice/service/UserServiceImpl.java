@@ -95,27 +95,24 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDto getUserDetailsByUserId(String userId) {
 		log.info("getUsedId");
-		UserEntity userEntity = userRepository.findByUserId(userId);
-		if (null == userEntity)
-			throw new UsernameNotFoundException("User Not Found");
-		UserDto dto = new ModelMapper().map(userEntity, UserDto.class);
-		String url = String.format(env.getProperty("albums.url"), userId);
-		log.debug("URL: {}", url);
-		// RestTemplate Communication
-		/*
-		 * ResponseEntity<List<AlbumResponseModel>> albumlistResponse =
-		 * restTemplate.exchange(url, HttpMethod.GET, null, new
-		 * ParameterizedTypeReference<List<AlbumResponseModel>>() { });
-		 * 
-		 * List<AlbumResponseModel> albumList = albumlistResponse.getBody();
-		 */
-
-		// Feign Client
-		
+		UserDto dto = null;
+		try {
+			UserEntity userEntity = userRepository.findByUserId(userId);
+			if (null == userEntity)
+				throw new UsernameNotFoundException("User Not Found");
+			dto = new ModelMapper().map(userEntity, UserDto.class);
+			String url = String.format(env.getProperty("albums.url"), userId);
+			log.debug("URL: {}", url);
+			// Feign Client
+			log.info("Before calling Album microservices");
 			List<AlbumResponseModel> albumList = albumsProxy.userAlbums(userId);
+			log.info("After calling Album microservices");
 			log.debug("albumList: {}", albumList);
 			dto.setAlbums(albumList);
-		
+		} catch (Exception ex) {
+			log.error("@getUserDetailsByUserId : " + ex);
+			ex.printStackTrace();
+		}
 		return dto;
 	}
 

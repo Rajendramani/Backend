@@ -7,11 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.baas.albumservice.data.AlbumEntity;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class AlbumsServiceImpl implements AlbumsService {
 
 	@Override
 	public List<AlbumEntity> getAlbums(String userId) {
+		log.info("@getAlbums");
 		List<AlbumEntity> returnValue = new ArrayList<>();
 
 		AlbumEntity albumEntity = new AlbumEntity();

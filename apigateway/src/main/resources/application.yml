@@ -45,13 +45,21 @@ spring:
         - id: get-user-albums
           uri: lb://albums-ws
           predicates:
-            - Path=/albums-ws/users/{id}/albums
+            - Path=/albums-ws/albums/{id}
             - Method=GET
             - Header=Authorization, Bearer (.*)
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/users-ws/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
+        - id: user-ws-actuator
+          uri: lb://users-ws
+          predicates:
+            - Path=/users-ws/actuator/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/users-ws/(?<segment>.*), /$\{segment}
             
 eureka:
   client:

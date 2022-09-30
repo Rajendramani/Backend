@@ -1,0 +1,26 @@
+input {
+    file {
+	type => "users-ws-log"
+	path => "C:\project_workspace\backend_workspace\Backend\userservice\users-ws.log"
+	}
+	
+	file {
+	type => "albums-ws-log"
+	path => "C:\project_workspace\backend_workspace\Backend\albumservice\albums-ws.log"
+	}
+}
+  
+output {
+	if[type] == "users-ws-log" {
+	elasticsearch { 
+		hosts => ["https://localhost:9200"]
+		index => "users-ws-%{+YYYY.MM.dd}"
+		}
+	} else if[type] == "albums-ws-log" {
+	elasticsearch { 
+		hosts => ["https://localhost:9200"]
+		index => "albums-ws-%{+YYYY.MM.dd}"
+		}
+	}
+stdout { codec => rubydebug } 
+}

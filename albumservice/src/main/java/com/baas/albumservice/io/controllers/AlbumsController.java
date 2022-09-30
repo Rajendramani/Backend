@@ -22,16 +22,17 @@ import com.baas.albumservice.ui.model.AlbumResponseModel;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/users/{id}/albums")
+@RequestMapping("/albums")
 @Slf4j
 public class AlbumsController {
 
 	@Autowired
 	AlbumsService albumsService;
 
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, })
+	@GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE,
+			MediaType.APPLICATION_XML_VALUE, })
 	public List<AlbumResponseModel> userAlbums(@PathVariable String id) {
-
+		log.info("@userAlbums");
 		List<AlbumResponseModel> returnValue = new ArrayList<>();
 
 		List<AlbumEntity> albumsEntities = albumsService.getAlbums(id);
